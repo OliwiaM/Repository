@@ -1,0 +1,80 @@
+CREATE TABLE [dbo].[PupilTBL] (
+    [PupilNo]        INT            NOT NULL IDENTITY(1,1),
+    [PupilTitle]     NVARCHAR (50)  NULL,
+    [PupilFirstName] NVARCHAR (50)  NULL,
+    [PupilLastName]  NVARCHAR (50)  NULL,
+    [PupilDOB]                      DATE NOT NULL,
+    [PupilAddress]   NVARCHAR (50)  NULL,
+    [PupilPostCode]  NVARCHAR (50)  NULL,
+    [PupilTelNo]     NVARCHAR (13)  NULL,
+    [PupilEmail]     NVARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([PupilNo] ASC),
+	);
+
+ CREATE TABLE [dbo].[InstrumentTBL] (
+   [InstrumentNo]      INT           NOT NULL IDENTITY(1,1),
+   [InstrumentName]    NVARCHAR (50) NULL,
+  PRIMARY KEY CLUSTERED ([InstrumentNo] ASC),
+  CONSTRAINT CK_InstrumentName CHECK(InstrumentName = 'String' OR InstrumentName = 'Woodwind' OR InstrumentName = 'Brass'
+OR InstrumentName = 'Percussion' OR InstrumentName = 'Singing'),
+);
+
+CREATE TABLE [dbo].[StaffTBL] (
+    [TutorNo]       INT             NOT NULL IDENTITY(1,1),
+	[InstrumentNo]  INT             NOT NULL,
+    [TutorTitle]    NVARCHAR (50)   NULL,
+    [TutorFirstName]NVARCHAR (50)   NULL,
+    [TutorLastName] NVARCHAR (50)   NULL,
+    [TutorTelNo]    NVARCHAR (13)   NULL,
+    [TutorEmail]    NVARCHAR (50)   NULL,
+    PRIMARY KEY CLUSTERED ([TutorNo] ASC),
+ CONSTRAINT [InstrumentTBL_ToStaffTBL] FOREIGN KEY ([InstrumentNo]) REFERENCES [dbo]. [InstrumentTBL] ([InstrumentNo]),
+    
+);
+
+CREATE TABLE [dbo].[BookingTBL] (
+    [BookingNo]      INT           NOT NULL IDENTITY(1,1),
+    [PupilNo]        INT           NOT NULL,
+    [InstrumentNo]   INT           NOT NULL,
+    [NoOfLessons]    INT           NOT NULL,
+    [Level]          NVARCHAR (50) NULL,
+    [Duration]       Bit Null,
+    [InitialFee]     Bit Null, 
+    [SpecialCircumstances] Bit Null,     
+    PRIMARY KEY CLUSTERED ([BookingNo] ASC),
+    CONSTRAINT [PupilTBL_ToBookingTBL] FOREIGN KEY ([PupilNo]) REFERENCES [dbo]. [PupilTBL] ([PupilNo]) ON DELETE CASCADE,
+    CONSTRAINT [InstrumentTBL_ToBookingTBL] FOREIGN KEY ([InstrumentNo]) REFERENCES [dbo]. [InstrumentTBL] ([InstrumentNo]),
+    check([NoOfLessons] > 0 and [NoOfLessons] <= 30),
+    CONSTRAINT CK_Level CHECK(Level = 'Beginner' OR Level = 'Intermediate' OR Level = 'Advanced'
+    OR Level = 'Diploma'),
+
+);
+
+CREATE TABLE [dbo].[RoomTBL] (
+   [RoomNo]         INT            NOT NULL IDENTITY(1,1),
+   [RoomType]       NVARCHAR (50)  NULL,
+   PRIMARY KEY CLUSTERED ([RoomNo] ASC),
+);
+
+CREATE TABLE [dbo].[LessonsTBL] (
+    [LessonNo]     INT            NOT NULL IDENTITY(1,1),
+    [BookingNo]    INT            NOT NULL,
+    [TutorNo]      INT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([LessonNo] ASC),
+    CONSTRAINT [BookingTBL_ToLessonsTBL] FOREIGN KEY ([BookingNo]) REFERENCES [dbo]. [BookingTBL] ([BookingNo]) ON DELETE CASCADE,
+    CONSTRAINT [StaffTBL_ToLessonsTBL] FOREIGN KEY ([TutorNo]) REFERENCES [dbo]. [StaffTBL] ([TutorNo]) ON DELETE CASCADE,
+);
+
+CREATE TABLE [dbo].[BlockTBL] (
+    [BlockID] INT NOT NULL IDENTITY(1,1),
+    [LessonNo] INT NOT NULL,
+    [Date] Date NOT NULL, 
+    [TimeSlot] int NOT NULL,
+    [RoomNo]       INT            NOT NULL, 
+PRIMARY KEY CLUSTERED ([BlockID] ASC),
+CONSTRAINT [RoomTBL_ToBlockTBL] FOREIGN KEY ([RoomNo]) REFERENCES [dbo]. [RoomTBL] ([RoomNo]),
+CONSTRAINT [LessonsTBL_ToBlockTBL] FOREIGN KEY ([LessonNo]) REFERENCES [dbo]. [LessonsTBL] ([LessonNo]) ON DELETE CASCADE,
+);
+
+
+

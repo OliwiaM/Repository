@@ -1,0 +1,38 @@
+INSERT INTO [PupilTBL] VALUES ('Mr', 'Roy', 'Barnes','2001-01-01','An Road','bt6','028901', 'lowry@gmail.com')
+INSERT INTO [PupilTBL] VALUES ('Miss', 'Hanna','Smith','2001-02-02','Bee Road','bt6','028902', 'smithhanna12@yahoo.com')
+INSERT INTO [PupilTBL] VALUES ('Miss', 'Sam','Smith','2001-03-03','Carr Road','bt6','028903', 'sam34@hotmail.com')
+INSERT INTO [PupilTBL] VALUES ('Mr', 'Samuel','Lee','1953-04-04','Deen Street','bt6','028904', 'samuale89@icloud.com')
+INSERT INTO [PupilTBL] VALUES ('Mr', 'Asher','Collins','1952-05-05','Elle Street','bt6','028905', 'ashercollins89@gmai.com')
+INSERT INTO [PupilTBL] VALUES ('Mrs', 'Susan', 'Diaz','1989-06-06',' Fine Avenue','bt6','028906', 'SusanDiaz@gmai.com')
+INSERT INTO [PupilTBL] VALUES ('Mrs', 'Julia', 'Brown','1986-07-07','Gravehill','bt6','028907', 'JuliaBrown@gmai.com')
+INSERT INTO [PupilTBL] VALUES ('Mrs', 'Lisa', 'Turner' ,'1980-08-08','Hallow Road','bt6','028908', 'LisaTurner @gmai.com')
+
+INSERT INTO [StaffTBL] VALUES (1,'Mrs', 'Rebeka','Sloan','028909', 'sloanr45@gmail.com')
+INSERT INTO [StaffTBL] VALUES (2,'Miss', 'Karla','Noland','0289011', 'karlaNol12@gmail.com')
+INSERT INTO [StaffTBL] VALUES (3,'Mr', 'Rick','Apple','0289012', 'rickapple@icloud.com')
+INSERT INTO [StaffTBL] VALUES (4,'Mrs', 'Ellie','Woods','028909', 'Woodelle1@gmail.com')
+INSERT INTO [StaffTBL] VALUES (5,'Mr', 'Sam','Bay','0289013', 'arthurB129@gmail.com')
+INSERT INTO [StaffTBL] VALUES (1,'Mr', 'John','Doe','0289014', 'arthurB129@gmail.com')
+INSERT INTO [StaffTBL] VALUES (2,'Mr', 'Claire','Allan','0289015', 'arthurB129@gmail.com')
+INSERT INTO [StaffTBL] VALUES (3,'Mr', 'Ryan','Bee','0289016', 'arthurB129@gmail.com')
+
+INSERT INTO [BookingTBL] VALUES (1, 1, 10, 'beginner', 1, 0, 0)
+INSERT INTO [BookingTBL] VALUES (2 ,2, 10, 'beginner', 0, 1, 0)
+INSERT INTO [BookingTBL] VALUES (3 ,3, 20, 'advanced', 1, 0, 1)
+INSERT INTO [BookingTBL] VALUES (4 ,4, 20, 'intermediate',0,1, 1)
+INSERT INTO [BookingTBL] VALUES (5 ,5, 30, 'intermediate',1,0, 1)
+
+INSERT INTO [LessonsTBL] VALUES (1,1)
+INSERT INTO [LessonsTBL] VALUES (2,2)
+INSERT INTO [LessonsTBL] VALUES (3,3)
+
+INSERT INTO [INSTRUMENTTBL] VALUES ('string')
+INSERT INTO [INSTRUMENTTBL] VALUES ('woodwind')
+INSERT INTO [INSTRUMENTTBL] VALUES ('brass')
+INSERT INTO [INSTRUMENTTBL] VALUES ('percussion')
+INSERT INTO [INSTRUMENTTBL] VALUES ('singing')
+
+
+INSERT INTO [RoomTBL] VALUES ('classroom')
+INSERT INTO [RoomTBL] VALUES ('practice room')
+INSERT INTO [RoomTBL] VALUES ('classroom')
